@@ -1,8 +1,6 @@
 repos:
-  - repo: https://github.com/asukiasyan/netutil.git
-
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: <git sha or tag>
+    rev: v2.4.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
