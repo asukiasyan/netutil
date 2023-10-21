@@ -9,7 +9,6 @@
 ### Network utility to lookup various records for given host
 
 # Features
----------
 
 * Lookup NameServer for given host
 * Lookup the IP addresses for given host
@@ -26,7 +25,6 @@ go build .
 ```
 
 # Usage
--------
 
 
 ```
