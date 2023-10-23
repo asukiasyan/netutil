@@ -5,3 +5,8 @@ repos:
       - id: conventional-pre-commit
         stages: [commit-msg]
         args: [chore, docs, feat, fix, refactor, revert, test]
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: master
+    hooks:
+      - id: go-fmt
+      - id: go-mod-tidy
