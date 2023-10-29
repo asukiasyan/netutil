@@ -42,5 +42,7 @@ func GetRecords(args string, url string) {
 		for i := range mx {
 			fmt.Println(mx[i].Host, mx[i].Pref)
 		}
+	default:
+		fmt.Println("\nIvalid argument, valid arguments are: ns, ip, cname, mx\n")
 	}
 }
