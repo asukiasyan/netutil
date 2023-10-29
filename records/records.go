@@ -9,38 +9,38 @@ import (
 func GetRecords(args string, url string) {
 	switch args {
 	case "ns":
-		arg, err := net.LookupNS(url)
+		ns, err := net.LookupNS(url)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-		for i := range arg {
-			fmt.Println(arg[i].Host)
+		for i := range ns {
+			fmt.Println(ns[i].Host)
 		}
 	case "ip":
-		arg, err := net.LookupIP(url)
+		ip, err := net.LookupIP(url)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-		for i := range arg {
-			fmt.Println(arg[i])
+		for i := range ip {
+			fmt.Println(ip[i])
 		}
 	case "cname":
-		arg, err := net.LookupCNAME(url)
+		cname, err := net.LookupCNAME(url)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-		fmt.Println(arg)
+		fmt.Println(cname)
 	case "mx":
-		arg, err := net.LookupMX(url)
+		mx, err := net.LookupMX(url)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-		for i := range arg {
-			fmt.Println(arg[i].Host, arg[i].Pref)
+		for i := range mx {
+			fmt.Println(mx[i].Host, mx[i].Pref)
 		}
 	}
 }
