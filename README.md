@@ -49,4 +49,8 @@ netutil mx <URL>
 
 This repository is a work in progress, I am trying to have on main somewhat usefull version, but it could have bugs.
 
-1. refactor code to accept only valid args
+* [x] refactor code to accept only valid args
+
+* [ ] Convert case statement to individual functions
+
+* [ ] Add tests for each case
