@@ -32,5 +32,17 @@ func main() {
 		help()
 		return
 	}
-	records.GetRecords(args[0], args[1])
+	switch args[0] {
+	case "ns":
+		ns := records.GetNS(args[1])
+		fmt.Println(ns)
+	case "ip":
+		fmt.Println(records.GetIP(args[1]))
+	case "cname":
+		fmt.Println(records.GetCNAME(args[1]))
+	case "mx":
+		fmt.Println(records.GetMX(args[1]))
+	default:
+		fmt.Println("Invalid argument, valid args are: ns, ip, cname, mx")
+	}
 }

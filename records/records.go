@@ -1,48 +1,56 @@
 package records
 
 import (
-	"fmt"
 	"log"
 	"net"
+	"strconv"
 )
 
-func GetRecords(args string, url string) {
-	switch args {
-	case "ns":
-		ns, err := net.LookupNS(url)
-		if err != nil {
-			log.Fatal(err)
-			return
-		}
-		for i := range ns {
-			fmt.Println(ns[i].Host)
-		}
-	case "ip":
-		ip, err := net.LookupIP(url)
-		if err != nil {
-			log.Fatal(err)
-			return
-		}
-		for i := range ip {
-			fmt.Println(ip[i])
-		}
-	case "cname":
-		cname, err := net.LookupCNAME(url)
-		if err != nil {
-			log.Fatal(err)
-			return
-		}
-		fmt.Println(cname)
-	case "mx":
-		mx, err := net.LookupMX(url)
-		if err != nil {
-			log.Fatal(err)
-			return
-		}
-		for i := range mx {
-			fmt.Println(mx[i].Host, mx[i].Pref)
-		}
-	default:
-		fmt.Println("\nIvalid argument, valid arguments are: ns, ip, cname, mx\n")
+// Returns pointer to slice of NS struct - []*NS
+func GetNS(url string) []string {
+	ns, err := net.LookupNS(url)
+	if err != nil {
+		log.Fatal(err)
 	}
+	var n []string
+	for _, v := range ns {
+		n = append(n, v.Host)
+	}
+	return n
+}
+
+// Returns slice of IP struct - []IP
+func GetIP(url string) []string {
+
+	ip, err := net.LookupIP(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var i []string
+	for _, v := range ip {
+		i = append(i, v.String())
+	}
+	return i
+}
+
+// Returns string
+func GetCNAME(url string) string {
+	cname, err := net.LookupCNAME(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return cname
+}
+
+// Returns pointer to slice of MX struct - []*MX
+func GetMX(url string) []string {
+	mx, err := net.LookupMX(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var m []string
+	for _, v := range mx {
+		m = append(m, v.Host, strconv.Itoa(int(v.Pref)))
+	}
+	return m
 }
